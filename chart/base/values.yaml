@@ -3,9 +3,11 @@
 # Declare variables to be passed into your templates.
 global: {}
 
-replicaCount: 1
-
 apiHost: "inventory-management-bff:80"
+appidBinding: ""
+
+replicaCount: 1
+logLevel: "debug"
 
 image:
   repository: replace
@@ -20,15 +22,15 @@ service:
   type: ClusterIP
   port: 80
 
+route:
+  enabled: false
+
 ingress:
   enabled: true
   appid:
     enabled: false
     # web or app - https://cloud.ibm.com/docs/services/appid?topic=appid-kube-auth
     requestType: web
-    binding:
-      name: ""
-      namespace: ""
 
 #  host: hello
   namespaceInHost: true
